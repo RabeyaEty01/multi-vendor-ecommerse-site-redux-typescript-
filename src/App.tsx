@@ -1,14 +1,11 @@
-import React, { useCallback, useReducer, useRef } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-
+import React from 'react';
+import TheLayout from './views/pages/TheLayout';
 
 function App() {
 
   return (
-    <div className="App">
-    
+    <div >
+      <TheLayout />
     </div>
   );
 }
