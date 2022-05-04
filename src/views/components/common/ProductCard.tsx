@@ -1,13 +1,13 @@
 import React from 'react';
 
-const ProductCard = () => {
+const ProductCard = ({product}:{product:any[]}) => {
     return (
         <div>
             <div>
                 <img src="" alt="" />
             </div>
             <div>
-                <h4>Product Title</h4>
+                <h4>{product}</h4>
                 <p>Product Price</p>
             </div>
         </div>
