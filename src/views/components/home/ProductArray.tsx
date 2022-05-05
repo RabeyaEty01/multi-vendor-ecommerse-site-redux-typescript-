@@ -1,13 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import ProductCard from '../common/ProductCard';
 
 
-const ProductArray = ({ products }: { products: any[] }) => {
+const ProductArray = ({ products }: {
+    products: IProduct[]
+}) => {
+
+    let navigate = useNavigate();
+
+    const onClick = (id: string | undefined): void => {
+        navigate("/product/" + id);
+    }
     return (
-        <div className="grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 text-gray-800 md:grid-cols-4 lg:grid-cols-5">
             {
                 products.map((product) => (
-                    <ProductCard product={product} />
+                    <ProductCard key={product._id} product={product} onclick={onClick} />
                 ))
             }
         </div>

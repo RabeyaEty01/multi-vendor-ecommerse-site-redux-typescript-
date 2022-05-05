@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import {
-    BrowserRouter,
+
     Routes,
     Route,
 } from "react-router-dom";
-//import Home from '../home/Home';
+import SingleProduct from '../singleProduct/singleProduct';
 
-//const OtherComponent = React.lazy(() => import('./OtherComponent'));
-
+//code-splitting
 const Home = React.lazy(() => import("../home/Home"));
 
 const Main = () => {
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home />}>
-                </Route>
-            </Routes>
-        </BrowserRouter>
+        <div className='container mx-auto'>
+            <Suspense fallback={<>Loading...</>}>
+                <Routes>
+                    <Route path="/" element={<Home />}>
+                    </Route>
+                    <Route path="/product/:id" element={<SingleProduct />} />
+                </Routes>
+            </Suspense>
+        </div>
     );
 };
 
