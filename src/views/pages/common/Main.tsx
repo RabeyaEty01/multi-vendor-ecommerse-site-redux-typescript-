@@ -4,7 +4,8 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import SingleProduct from '../singleProduct/singleProduct';
+import SingleProduct from '../singleProduct/SingleProduct';
+
 
 //code-splitting
 const Home = React.lazy(() => import("../home/Home"));
