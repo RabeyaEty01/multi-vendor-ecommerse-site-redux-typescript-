@@ -6,14 +6,30 @@ const axiosConfig: AxiosRequestConfig = {
 }
 const instance: AxiosInstance = axios.create(axiosConfig);
 
+
+instance.interceptors.request.use(function (config) {
+    // Do something before request is sent
+
+    return {
+        ...config,
+        headers: {
+            Authorization: JSON.parse(JSON.parse(localStorage.getItem("persist:root") || "").auth)?.data?.token,
+        }
+    };
+}, function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+});
+
+
 class Request {
     async get(url: string): Promise<AxiosResponse> {
         return instance.get(url).then((res) => res.data);
     }
-    async post(url: string, body:any): Promise<AxiosResponse> { 
+    async post(url: string, body: any): Promise<AxiosResponse> {
         return instance.post(url, body).then((res) => res.data);
     }
-    async update(url: string, body:any): Promise<AxiosResponse> {
+    async update(url: string, body: any): Promise<AxiosResponse> {
         return instance.patch(url, body).then((res) => res.data);
     }
     async delete(url: string): Promise<AxiosResponse> {

@@ -2,7 +2,7 @@ import useAPI from 'hooks/useAPI';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { add_to_cart } from 'redux/actions/cartAction';
+import { add_to_cart, remove_from_cart } from 'redux/actions/cartAction';
 import ProductService from 'services/Product.service';
 
 const SingleProduct = () => {
@@ -19,7 +19,7 @@ const SingleProduct = () => {
             <button className='p-2 border' onClick={() => dispatch(add_to_cart(product as IProduct))}
 
             >Add to cart</button>
-            <button className='p-2 border'>Remove from cart</button>
+            <button className='p-2 border' onClick={()=>dispatch(remove_from_cart(id))}>Remove from cart</button>
         </div>
     );
 };

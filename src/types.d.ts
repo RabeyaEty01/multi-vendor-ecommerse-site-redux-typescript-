@@ -7,3 +7,16 @@ interface IProduct {
     price: number;
     store: string;
 }
+
+interface ILoginData {
+    email: string,
+    password: string
+}
+
+interface IAuthUser {
+    name: string
+    email: string
+    id: string
+    role: string
+    token: string
+}
